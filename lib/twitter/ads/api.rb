@@ -10,6 +10,7 @@ require 'twitter/ads/promoted_tweets'
 require 'twitter/ads/statistics'
 require 'twitter/ads/tailored_audiences'
 require 'twitter/ads/targeting'
+require 'twitter/ads/videos'
 require 'twitter/rest/oauth'
 
 module Twitter
@@ -27,6 +28,7 @@ module Twitter
       include Twitter::Ads::Statistics
       include Twitter::Ads::TailoredAudiences
       include Twitter::Ads::Targeting
+      include Twitter::Ads::Videos
     end
   end
 end

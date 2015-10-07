@@ -6,6 +6,7 @@ require 'twitter/rest/request'
 require 'twitter/settings'
 require 'twitter/tweet'
 require 'twitter/utils'
+require 'twitter/video'
 
 module Twitter
   module Ads

@@ -41,4 +41,18 @@ describe Twitter::Ads::Accounts do
       expect(tweets.first.id).to eq(288524949692489728)
     end
   end
+
+  describe '#reach_estimate' do
+    before do
+      stub_get('https://ads-api.twitter.com/0/accounts/abc123/reach_estimate').with(query: { product_type: "PROMOTED_TWEETS",
+                                                                                             objective: "TWEET_ENGAGEMENTS",
+                                                                                             user_id: 7318222 })
+        .to_return(body: fixture('reach_estimate.json'), headers: {content_type: 'application/json; charset=utf-8'})
+    end
+
+    it 'requests the correct resource' do
+      reach = @client.reach_estimate('abc123', "PROMOTED_TWEETS", "TWEET_ENGAGEMENTS", 7318222)
+      expect(reach.to_h[:data][:count]).to be(59112880)
+    end
+  end
 end

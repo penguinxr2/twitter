@@ -61,6 +61,29 @@ module Twitter
         perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{id}/scoped_timeline", options,
                                 :data, Twitter::Tweet)
       end
+
+      #Determine the approximate reach of Promoted Tweet in Timelines and Promoted Account campaigns.
+      # @see https://dev.twitter.com/ads/reference/get/accounts/%3Aaccount_id/reach_estimate
+      # @rate_limited Yes
+      # @authentication Requires user context
+      # @raise [Twitter::Error::Unauthorized] Error raised when supplied user credentials are not valid.
+      # @return [Array<Twitter::ReachEstimate>]
+      # @param account_id [String] Ads account id.
+      # @option options [String] :objective Objective type to restrict reach to.
+      # @param options [Hash] customizeable options.
+      # @option options [String] :bid_type Sets the bidding mechanism.
+      # @option options [String] :followers_of_users Include the followers of the specified comma-separated list of user_ids in reach estimate. Defaults to false. 
+      # @option options [String] :similar_to_followers_of_users Include users that are similar to a comma-separated list of user_id
+      # @option options [String] :locations A comma-separated string of location identifiers to scope targeting to on this line item.
+      # @option options [String] :interests A comma-separated string of interest identifiers to scope targeting to on this line item
+      # @option options [String] :gender A comma-separated string of gender identifiers to scope targeting to on this line item
+      # @option options [String] :platforms A comma-separated string of Platform identifiers to scope targeting to on this line item.
+      # @option options [String] :taylored_audiences A comma-separated string of tailored audience identifiers.
+      def reach_estimate(id, product_type, objective, user_id, options = {})
+        options = options.merge(product_type: product_type, objective: objective, user_id: user_id)
+        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{id}/reach_estimate", options,
+                                :data)
+      end
     end
   end
 end

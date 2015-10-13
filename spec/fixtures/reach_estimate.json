@@ -1,0 +1,17 @@
+{
+  "data": {
+    "count": 59112880,
+    "infinite_bid_count": 59112880
+  },
+  "data_type": "reach_estimate",
+  "request": {
+    "params": {
+      "account_id": "4cury",
+      "product_type": "PROMOTED_TWEETS",
+      "similar_to_followers_of_users": [
+        14230524
+      ],
+      "user_id": "7318222"
+    }
+  }
+}

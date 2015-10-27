@@ -33,6 +33,7 @@ module Twitter
       # @return [Array, Hash]
       def perform
         options_key = @request_method == :get ? :params : :form
+        binding.pry
         response = http_client.with(@headers).public_send(@request_method, @uri.to_s, options_key => @options)
         response_body = response.body.empty? ? '' : symbolize_keys!(response.parse)
         response_headers = response.headers
@@ -63,7 +64,9 @@ module Twitter
           @request_method = :post
           @headers = Twitter::Headers.new(@client, @request_method, @uri, options).request_headers
           @headers[:content_type] = 'text/comma-separated-values'
-          options.merge!(key => HTTP::FormData::File.new(file, filename: File.basename(file), mime_type: mime_type(File.basename(file))))
+          filename = File.basename(file)
+          binding.pry
+          options.merge!(key => HTTP::FormData::File.new(file, filename: filename, mime_type: "text/csv"))
         else
           @request_method = request_method
           @headers = Twitter::Headers.new(@client, @request_method, @uri, options).request_headers

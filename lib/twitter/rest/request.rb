@@ -50,7 +50,13 @@ module Twitter
           file = options.delete(:file)
           @request_method = :post
           @headers = Twitter::Headers.new(@client, @request_method, @uri, options).request_headers
-          options.merge!(key => HTTP::FormData::File.new(file, filename: File.basename(file), mime_type: mime_type(File.basename(file))))
+
+          if file.is_a?(StringIO)
+            options.merge!(key => HTTP::FormData::File.new(file, mime_type: 'video/mp4'))
+          else
+            options.merge!(key => HTTP::FormData::File.new(file, filename: File.basename(file), mime_type: mime_type(File.basename(file))))
+          end
+
         elsif request_method == :csv_post
           # TODO: This is a horrible hack. I'll figure out how to refactor/do correctly later.
           key = options.delete(:key)

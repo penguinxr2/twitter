@@ -8,12 +8,12 @@ describe Twitter::Ads::TailoredAudiences do
 
   describe '#tailored_audiences' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences")
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences")
         .to_return(body: fixture('tailored_audiences.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tailored_audiences(account_id)
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences")).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences")).to have_been_made
     end
     it 'gets the right resources' do
       audiences = @client.tailored_audiences(account_id)
@@ -24,12 +24,12 @@ describe Twitter::Ads::TailoredAudiences do
 
   describe '#tailored_audience' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/br7")
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/br7")
         .to_return(body: fixture('tailored_audience_get.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tailored_audience(account_id, 'br7')
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/br7")).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/br7")).to have_been_made
     end
     it 'gets the right resource' do
       audience = @client.tailored_audience(account_id, 'br7')
@@ -46,7 +46,7 @@ describe Twitter::Ads::TailoredAudiences do
       }
     end
     before do
-      stub_post("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences")
+      stub_post("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences")
         .with(body: expected).to_return(body: fixture('tailored_audience_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'creates a line item' do
@@ -58,7 +58,7 @@ describe Twitter::Ads::TailoredAudiences do
 
   describe '#destroy_tailored_audience' do
     before do
-      stub_delete("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/13si")
+      stub_delete("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/13si")
         .to_return(body: fixture('tailored_audience_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'deletes the tailored audience' do
@@ -70,12 +70,12 @@ describe Twitter::Ads::TailoredAudiences do
 
   describe '#tailored_audience_changes' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes")
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes")
         .to_return(body: fixture('tailored_audience_changes.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the right resources' do
       @client.tailored_audience_changes(account_id)
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes")).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes")).to have_been_made
     end
     it 'gets the right resources' do
       changes = @client.tailored_audience_changes(account_id)
@@ -86,12 +86,12 @@ describe Twitter::Ads::TailoredAudiences do
 
   describe '#tailored_audience_change' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes/9q0")
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes/9q0")
         .to_return(body: fixture('tailored_audience_change_get.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resource' do
       @client.tailored_audience_change(account_id, '9q0')
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes/9q0")).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes/9q0")).to have_been_made
     end
     it 'gets the right resource' do
       change = @client.tailored_audience_change(account_id, '9q0')
@@ -109,7 +109,7 @@ describe Twitter::Ads::TailoredAudiences do
       }
     end
     before do
-      stub_post("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes")
+      stub_post("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes")
         .with(body: expected).to_return(body: fixture('tailored_audience_change_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'creates the new change' do

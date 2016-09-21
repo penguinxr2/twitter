@@ -28,7 +28,7 @@ module Twitter
       # @option options [Integer] :count Specifies the number of line items to retrieve.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def line_items(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/line_items",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/line_items",
                                  options, :data, Twitter::LineItem)
       end
 
@@ -44,7 +44,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       def line_item(account_id, line_item_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/line_items/#{line_item_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/line_items/#{line_item_id}",
                                 options, Twitter::LineItem)
       end
 
@@ -69,7 +69,7 @@ module Twitter
       # @option options [String] :bid_unit Change bid unit based on objective (TODO: Twitter::Optimization enumeration?)
       def create_line_item(account_id, campaign_id, options = {})
         options = options.merge(campaign_id: campaign_id)
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/line_items",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/line_items",
                                  options, Twitter::LineItem)
       end
 
@@ -88,7 +88,7 @@ module Twitter
       # @option options [Integer] :total_budget_amount_local_micro The total budget amount (Amount*1e6).
       # @option options [String] :optimization Change the optimization setting (TODO: Twitter::Optimization enumeration?)
       def update_line_item(account_id, line_item_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/line_items/#{line_item_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/line_items/#{line_item_id}",
                                 options, Twitter::LineItem)
       end
 
@@ -101,7 +101,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param line_item_id [String] Line item id
       def destroy_line_item(account_id, line_item_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/line_items/#{line_item_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/line_items/#{line_item_id}",
                                 {}, Twitter::LineItem)
       end
     end

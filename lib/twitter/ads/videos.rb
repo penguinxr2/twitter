@@ -25,7 +25,7 @@ module Twitter
       # @option options [String] :line_item_id Restrict listing to accounts associated to the specified line item.
       # @option options [Boolean] :with_deleted Set to true if you want deleted funding instruments to be returned.
       def videos(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/videos",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/videos",
                                  options, :data, Twitter::Video)
       end
 
@@ -40,7 +40,7 @@ module Twitter
       # @param with_deleted [Boolean] Include deleted results in your request. Defaults to false.
 
       def video(account_id, video_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/videos/#{video_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/videos/#{video_id}",
                                   options, Twitter::Video)
 
       end
@@ -55,7 +55,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       def create_video(account_id, video_media_id, options = {})
         options = options.merge(video_media_id: video_media_id)
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/videos",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/videos",
                                   options, Twitter::Video)
 
       end

@@ -24,7 +24,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       def tailored_audiences(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences",
                                  options, :data, Twitter::TailoredAudience)
       end
 
@@ -40,7 +40,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       def tailored_audience(account_id, tailored_audience_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/#{tailored_audience_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/#{tailored_audience_id}",
                                  options, Twitter::TailoredAudience)
       end
 
@@ -58,7 +58,7 @@ module Twitter
       def create_tailored_audience(account_id, name, list_type)
         args = { list_type: list_type,
                  name: name }
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences",
                                  args, Twitter::TailoredAudience)
       end
 
@@ -74,7 +74,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       def destroy_tailored_audience(account_id, tailored_audience_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/#{tailored_audience_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/#{tailored_audience_id}",
                                    {}, Twitter::TailoredAudience)
       end
 
@@ -88,7 +88,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param options [Hash] customizeable options.
       def tailored_audience_changes(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes",
                                  options, :data, Twitter::TailoredAudienceChange)
       end
 
@@ -104,7 +104,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       def tailored_audience_change(account_id, tailored_audience_change_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes/#{tailored_audience_change_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes/#{tailored_audience_change_id}",
                                 options, Twitter::TailoredAudienceChange)
       end
 
@@ -123,7 +123,7 @@ module Twitter
         args = { tailored_audience_id: tailored_audience_id,
                  input_file_path: input_file_path,
                  operation: operation }
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audience_changes",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audience_changes",
                                  args, Twitter::TailoredAudienceChange)
       end
 
@@ -140,7 +140,7 @@ module Twitter
       def tailored_audience_opt_out(account_id, input_file_path, list_type)
         args = { input_file_path: input_file_path,
                  list_type: list_type }
-        perform_get("https://ads-api.twitter.com/0/accounts/#{account_id}/tailored_audiences/global_opt_out",
+        perform_get("https://ads-api.twitter.com/1/accounts/#{account_id}/tailored_audiences/global_opt_out",
                     args)
       end
 

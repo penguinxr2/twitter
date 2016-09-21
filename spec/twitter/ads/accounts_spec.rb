@@ -7,11 +7,11 @@ describe Twitter::Ads::Accounts do
 
   describe '#accounts' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts').to_return(body: fixture('accounts.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts').to_return(body: fixture('accounts.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.accounts
-      expect(a_get('https://ads-api.twitter.com/0/accounts')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/accounts')).to have_been_made
     end
     it 'gets the right resources' do
       accounts = @client.accounts
@@ -23,7 +23,7 @@ describe Twitter::Ads::Accounts do
 
   describe '#account' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/gq0vll').to_return(body: fixture('account.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts/gq0vll').to_return(body: fixture('account.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resource' do
       account = @client.account('gq0vll')
@@ -33,7 +33,7 @@ describe Twitter::Ads::Accounts do
 
   describe '#scoped_timeline' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/abc123/scoped_timeline').with(query: { user_ids: 783214 }).to_return(body: fixture('scoped_timeline.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts/abc123/scoped_timeline').with(query: { user_ids: 783214 }).to_return(body: fixture('scoped_timeline.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resource' do
       tweets = @client.scoped_timeline('abc123', 783214)
@@ -44,7 +44,7 @@ describe Twitter::Ads::Accounts do
 
   describe '#reach_estimate' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/abc123/reach_estimate').with(query: { product_type: "PROMOTED_TWEETS",
+      stub_get('https://ads-api.twitter.com/1/accounts/abc123/reach_estimate').with(query: { product_type: "PROMOTED_TWEETS",
                                                                                              objective: "TWEET_ENGAGEMENTS",
                                                                                              user_id: 7318222 })
         .to_return(body: fixture('reach_estimate.json'), headers: {content_type: 'application/json; charset=utf-8'})

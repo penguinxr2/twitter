@@ -25,7 +25,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted accounts to be returned.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def accounts(options = {})
-        perform_get_with_objects('https://ads-api.twitter.com/0/accounts', options, Twitter::Account)
+        perform_get_with_objects('https://ads-api.twitter.com/1/accounts', options, Twitter::Account)
       end
 
       # Returns a specified account.
@@ -38,7 +38,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted accounts to be returned.
       def account(id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{id}", options, Twitter::Account)
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{id}", options, Twitter::Account)
       end
 
       # Retrieve up to 200 of the most recent promotable Tweets created by one or more
@@ -58,7 +58,7 @@ module Twitter
       def scoped_timeline(id, user_ids, options = {})
         ids = [user_ids].flatten.join(',')
         options = options.merge(user_ids: ids)
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{id}/scoped_timeline", options,
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{id}/scoped_timeline", options,
                                 :data, Twitter::Tweet)
       end
 
@@ -81,7 +81,7 @@ module Twitter
       # @option options [String] :taylored_audiences A comma-separated string of tailored audience identifiers.
       def reach_estimate(id, product_type, objective, user_id, options = {})
         options = options.merge(product_type: product_type, objective: objective, user_id: user_id)
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{id}/reach_estimate", options,
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{id}/reach_estimate", options,
                                 :data)
       end
     end

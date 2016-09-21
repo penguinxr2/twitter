@@ -9,12 +9,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#targeting_criteria' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria").with(query: {line_item_id: line_item})
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria").with(query: {line_item_id: line_item})
         .to_return(body: fixture('targeting_criteria.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.targeting_criteria(account, line_item)
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria").with(query: {line_item_id: line_item})).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria").with(query: {line_item_id: line_item})).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.targeting_criteria(account, line_item)
@@ -24,12 +24,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#targeting_criterion' do
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria/2rqqn")
+      stub_get("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria/2rqqn")
         .to_return(body: fixture('targeting_criterion_get.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resource' do
       @client.targeting_criterion(account, '2rqqn')
-      expect(a_get("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria/2rqqn")).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria/2rqqn")).to have_been_made
     end
     it 'gets the correct resource' do
       criterion = @client.targeting_criterion(account, '2rqqn')
@@ -46,12 +46,12 @@ describe Twitter::Ads::Targeting do
       }
     end
     before do
-      stub_post("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria")
+      stub_post("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria")
         .with(body: args).to_return(body: fixture('targeting_criterion_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'creates a targeting criterion' do
       criterion = @client.create_targeting_criterion(account, line_item, 'PHRASE_KEYWORD', 'righteous dude')
-      expect(a_post("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria").with(body: args)).to have_been_made
+      expect(a_post("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria").with(body: args)).to have_been_made
       expect(criterion).to be_a(Twitter::TargetingCriterion)
       expect(criterion.id).to eq('31umv7')
     end
@@ -67,19 +67,19 @@ describe Twitter::Ads::Targeting do
     end
     let(:expected) { args.merge(line_item_id: '6zva') }
     before do
-      stub_put("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria")
+      stub_put("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria")
         .with(body: expected).to_return(body: fixture('targeting_criterion_put.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'updates the resource' do
       criteria = @client.update_targeting_criteria(account, '6zva', args)
-      expect(a_put("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria").with(body: expected)).to have_been_made
+      expect(a_put("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria").with(body: expected)).to have_been_made
       expect(criteria.map(&:id)).to match(['ziujs', 'ziujt', 'ziuju'])
     end
   end
 
   describe '#destroy_targeting_criterion' do
     before do
-      stub_delete("https://ads-api.twitter.com/0/accounts/#{account}/targeting_criteria/43852jv8hlet")
+      stub_delete("https://ads-api.twitter.com/1/accounts/#{account}/targeting_criteria/43852jv8hlet")
         .to_return(body: fixture('targeting_criterion_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'deletes the requested resource' do
@@ -98,12 +98,12 @@ describe Twitter::Ads::Targeting do
       }
     end
     before do
-      stub_get("https://ads-api.twitter.com/0/accounts/abcd/targeting_suggestions")
+      stub_get("https://ads-api.twitter.com/1/accounts/abcd/targeting_suggestions")
         .with(query: args).to_return(body: fixture('targeting_suggestions.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests targeting values' do
       @client.targeting_suggestions('abcd', 'KEYWORD', 'cats')
-      expect(a_get("https://ads-api.twitter.com/0/accounts/abcd/targeting_suggestions").with(query: args)).to have_been_made
+      expect(a_get("https://ads-api.twitter.com/1/accounts/abcd/targeting_suggestions").with(query: args)).to have_been_made
     end
     it 'gets the correct suggestions' do
       suggestions = @client.targeting_suggestions('abcd', 'KEYWORD', 'cats')
@@ -116,12 +116,12 @@ describe Twitter::Ads::Targeting do
   describe '#app_store_categories' do
     let(:args) { {q: 'music', store: 'IOS_APP_STORE'} }
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/app_store_categories').with(query: args)
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/app_store_categories').with(query: args)
         .to_return(body: fixture('app_store_categories.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.app_store_categories(args)
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/app_store_categories').with(query: args)).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/app_store_categories').with(query: args)).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.app_store_categories(args)
@@ -133,12 +133,12 @@ describe Twitter::Ads::Targeting do
   describe '#behavior_taxonomies' do
     let(:args) { {parent_behavior_taxonomy_ids: 'null'} }
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/behavior_taxonomies').with(query: args)
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/behavior_taxonomies').with(query: args)
         .to_return(body: fixture('behavior_taxonomies.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.behavior_taxonomies(args)
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/behavior_taxonomies').with(query: args)).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/behavior_taxonomies').with(query: args)).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.behavior_taxonomies(args)
@@ -149,12 +149,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#behaviors' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/behaviors')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/behaviors')
         .to_return(body: fixture('behaviors.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.behaviors
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/behaviors')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/behaviors')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.behaviors
@@ -165,12 +165,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#devices' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/devices')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/devices')
         .to_return(body: fixture('devices.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.devices
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/devices')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/devices')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.devices
@@ -182,12 +182,12 @@ describe Twitter::Ads::Targeting do
   describe '#interests' do
     let(:args) { {q: 'pets'} }
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/interests').with(query: args)
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/interests').with(query: args)
         .to_return(body: fixture('interests.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.interests(args)
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/interests').with(query: args)).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/interests').with(query: args)).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.interests(args)
@@ -198,12 +198,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#languages' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/languages')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/languages')
         .to_return(body: fixture('ad_languages.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.languages
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/languages')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/languages')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.languages
@@ -215,12 +215,12 @@ describe Twitter::Ads::Targeting do
   describe '#locations' do
     let(:args) { {location_type: 'CITY', q: 'Portland'} }
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/locations').with(query: args)
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/locations').with(query: args)
         .to_return(body: fixture('ad_locations.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.locations(args)
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/locations').with(query: args)).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/locations').with(query: args)).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.locations(args)
@@ -232,12 +232,12 @@ describe Twitter::Ads::Targeting do
   describe '#network_operators' do
     let(:args) { {country_code: 'US', count: 5} }
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/network_operators').with(query: args)
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/network_operators').with(query: args)
         .to_return(body: fixture('network_operators.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.network_operators(args)
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/network_operators').with(query: args)).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/network_operators').with(query: args)).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.network_operators(args)
@@ -248,12 +248,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#platform_versions' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/platform_versions')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/platform_versions')
         .to_return(body: fixture('platform_versions.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.platform_versions
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/platform_versions')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/platform_versions')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.platform_versions
@@ -264,12 +264,12 @@ describe Twitter::Ads::Targeting do
 
   describe '#platforms' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/platforms')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/platforms')
         .to_return(body: fixture('platforms.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.platforms
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/platforms')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/platforms')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.platforms
@@ -280,12 +280,12 @@ describe Twitter::Ads::Targeting do
 
   describe 'tv_channels' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/tv_channels')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/tv_channels')
         .to_return(body: fixture('tv_channels.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tv_channels
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/tv_channels')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/tv_channels')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.tv_channels
@@ -296,12 +296,12 @@ describe Twitter::Ads::Targeting do
 
   describe 'tv_genres' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/tv_genres')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/tv_genres')
         .to_return(body: fixture('tv_genres.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tv_genres
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/tv_genres')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/tv_genres')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.tv_genres
@@ -312,12 +312,12 @@ describe Twitter::Ads::Targeting do
 
   describe 'tv_markets' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/tv_markets')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/tv_markets')
         .to_return(body: fixture('tv_markets.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tv_markets
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/tv_markets')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/tv_markets')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.tv_markets
@@ -328,12 +328,12 @@ describe Twitter::Ads::Targeting do
 
   describe 'tv_shows' do
     before do
-      stub_get('https://ads-api.twitter.com/0/targeting_criteria/tv_shows')
+      stub_get('https://ads-api.twitter.com/1/targeting_criteria/tv_shows')
         .to_return(body: fixture('tv_shows.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.tv_shows
-      expect(a_get('https://ads-api.twitter.com/0/targeting_criteria/tv_shows')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/targeting_criteria/tv_shows')).to have_been_made
     end
     it 'gets the right resources' do
       criteria = @client.tv_shows

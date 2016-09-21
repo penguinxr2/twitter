@@ -30,7 +30,7 @@ module Twitter
       # @option options [String] :line_item_ids A comma separated list of line item identifiers to scope the query.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def lead_gen_cards(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/lead_gen",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/lead_gen",
                                  options, :data, Twitter::Card::LeadGen)
       end
 
@@ -44,7 +44,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def lead_gen_card(account_id, card_id)
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/lead_gen/#{card_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/lead_gen/#{card_id}",
                                 {}, Twitter::Card::LeadGen)
       end
 
@@ -63,7 +63,7 @@ module Twitter
       # @option params [String] :fallback_url URL to redirect users to when card cannot be presented.
       # @option params [String] :privacy_policy_url Privacy policy of the advertiser
       def create_lead_gen_card(account_id, params = {})
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/lead_gen",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/lead_gen",
                                  params, Twitter::Card::LeadGen)
       end
 
@@ -77,7 +77,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param options [Hash] Fields to update. See documentation for options.
       def update_lead_gen_card(account_id, card_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/lead_gen/#{card_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/lead_gen/#{card_id}",
                                 options, Twitter::Card::LeadGen)
       end
 
@@ -91,7 +91,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def destroy_lead_gen_card(account_id, card_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/lead_gen/#{card_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/lead_gen/#{card_id}",
                                    {}, Twitter::Card::LeadGen)
       end
 
@@ -111,7 +111,7 @@ module Twitter
       # @option options [String] :line_item_ids A comma separated list of line item identifiers to scope the query.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def app_download_cards(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/app_download",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/app_download",
                                  options, :data, Twitter::Card::AppDownload)
       end
 
@@ -125,7 +125,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def app_download_card(account_id, card_id)
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/app_download/#{card_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/app_download/#{card_id}",
                                 {}, Twitter::Card::AppDownload)
       end
 
@@ -144,7 +144,7 @@ module Twitter
       # @option params [String] :ipad_app_id App Store id
       # @option params [String] :googleplay_app_id App Store id
       def create_app_download_card(account_id, params = {})
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/app_download",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/app_download",
                                  params, Twitter::Card::AppDownload)
       end
 
@@ -158,7 +158,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param options [Hash] Fields to update. See documentation for options.
       def update_app_download_card(account_id, card_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/app_download/#{card_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/app_download/#{card_id}",
                                 options, Twitter::Card::AppDownload)
       end
 
@@ -172,7 +172,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def destroy_app_download_card(account_id, card_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/app_download/#{card_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/app_download/#{card_id}",
                                    {}, Twitter::Card::AppDownload)
       end
 
@@ -191,7 +191,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted line items to be returned.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def image_app_download_cards(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/image_app_download",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/image_app_download",
                                  options, :data, Twitter::Card::ImageAppDownload)
       end
 
@@ -205,7 +205,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def image_app_download_card(account_id, card_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/image_app_download/#{card_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/image_app_download/#{card_id}",
                                 options, Twitter::Card::ImageAppDownload)
       end
 
@@ -225,7 +225,7 @@ module Twitter
       # @option params [String] :googleplay_app_id App Store id
       # @option params [String] :wide_app_image_media_id Media id of image to use instead of the app store icon
       def create_image_app_download_card(account_id, options = {})
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/image_app_download",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/image_app_download",
                                  options, Twitter::Card::ImageAppDownload)
       end
 
@@ -245,7 +245,7 @@ module Twitter
       # @option params [String] :googleplay_app_id App Store id
       # @option params [String] :wide_app_image_media_id Media id of image to use instead of the app store icon
       def update_image_app_download_card(account_id, card_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/image_app_download/#{card_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/image_app_download/#{card_id}",
                                 options, Twitter::Card::ImageAppDownload)
       end
 
@@ -259,7 +259,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def destroy_image_app_download_card(account_id, card_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/image_app_download/#{card_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/image_app_download/#{card_id}",
                                    {}, Twitter::Card::ImageAppDownload)
       end
 
@@ -279,7 +279,7 @@ module Twitter
       # @option options [String] :line_item_ids A comma separated list of line item identifiers to scope the query.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def website_cards(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/website",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/website",
                                 options, :data, Twitter::Card::Website)
       end
 
@@ -293,7 +293,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def website_card(account_id, card_id)
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/website/#{card_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/website/#{card_id}",
                                 {}, Twitter::Card::Website)
       end
 
@@ -321,7 +321,7 @@ module Twitter
           website_url: url,
           image_media_id: media_id,
         })
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/website",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/website",
                                  options, Twitter::Card::Website)
       end
 
@@ -341,7 +341,7 @@ module Twitter
       # @option options [String] :media_id Image media id.
       # @option options [String] :website_cta Enumeration for call-to-action button text.
       def update_website_card(account_id, card_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/website/#{card_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/website/#{card_id}",
                                  options, Twitter::Card::Website)
       end;
 
@@ -355,7 +355,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param card_id [String] Card id.
       def destroy_website_card(account_id, card_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/cards/website/#{card_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/cards/website/#{card_id}",
                                 {}, Twitter::Card::Website)
       end
     end

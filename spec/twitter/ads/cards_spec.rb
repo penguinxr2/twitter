@@ -8,12 +8,12 @@ describe Twitter::Ads::Cards do
   context 'lead gen' do
     context '#lead_gen_cards' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/gpj5/cards/lead_gen')
+        stub_get('https://ads-api.twitter.com/1/accounts/gpj5/cards/lead_gen')
           .to_return(body: fixture('cards/lead_gens.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resources' do
         @client.lead_gen_cards('gpj5')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/gpj5/cards/lead_gen')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/gpj5/cards/lead_gen')).to have_been_made
       end
       it 'gets the right resources'do
         cards = @client.lead_gen_cards('gpj5')
@@ -24,12 +24,12 @@ describe Twitter::Ads::Cards do
 
     context '#lead_gen_card' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/gpj5/cards/lead_gen/2od')
+        stub_get('https://ads-api.twitter.com/1/accounts/gpj5/cards/lead_gen/2od')
           .to_return(body: fixture('cards/lead_gen.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resoruce' do
         @client.lead_gen_card('gpj5', '2od')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/gpj5/cards/lead_gen/2od')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/gpj5/cards/lead_gen/2od')).to have_been_made
       end
       it 'gets the right resource' do
         card = @client.lead_gen_card('gpj5', '2od')
@@ -50,12 +50,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_post('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen').with(body: expected)
+        stub_post('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen').with(body: expected)
           .to_return(body: fixture('cards/lead_gen_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.create_lead_gen_card('abc1', expected)
-        expect(a_post('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen').with(body: expected)).to have_been_made
+        expect(a_post('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen').with(body: expected)).to have_been_made
       end
       it 'creates a lead_gen card' do
         card = @client.create_lead_gen_card('abc1', expected)
@@ -71,12 +71,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_put('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen/zy21').with(body: expected)
+        stub_put('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen/zy21').with(body: expected)
           .to_return(body: fixture('cards/lead_gen_put.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.update_lead_gen_card('abc1', 'zy21', expected)
-        expect(a_put('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen/zy21').with(body: expected)).to have_been_made
+        expect(a_put('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen/zy21').with(body: expected)).to have_been_made
       end
       it 'updates the card' do
         card = @client.update_lead_gen_card('abc1', 'zy21', expected)
@@ -87,12 +87,12 @@ describe Twitter::Ads::Cards do
 
     context '#destroy_lead_gen_card' do
       before do
-        stub_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen/zy21')
+        stub_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen/zy21')
           .to_return(body: fixture('cards/lead_gen_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.destroy_lead_gen_card('abc1', 'zy21')
-        expect(a_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/lead_gen/zy21')).to have_been_made
+        expect(a_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/lead_gen/zy21')).to have_been_made
       end
       it 'deletes the correct resource' do
         card = @client.destroy_lead_gen_card('abc1', 'zy21')
@@ -105,12 +105,12 @@ describe Twitter::Ads::Cards do
   context 'app download' do
     context '#app_download_cards' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download')
           .to_return(body: fixture('cards/app_downloads.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resources' do
         @client.app_download_cards('abc1')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download')).to have_been_made
       end
       it 'gets the right resources'do
         cards = @client.app_download_cards('abc1')
@@ -121,12 +121,12 @@ describe Twitter::Ads::Cards do
 
     context '#app_download_card' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/pfs')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/pfs')
           .to_return(body: fixture('cards/app_download.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resoruce' do
         @client.app_download_card('abc1', 'pfs')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/pfs')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/pfs')).to have_been_made
       end
       it 'gets the right resource' do
         card = @client.app_download_card('abc1', 'pfs')
@@ -146,12 +146,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_post('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download').with(body: expected)
+        stub_post('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download').with(body: expected)
           .to_return(body: fixture('cards/app_download_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.create_app_download_card('abc1', expected)
-        expect(a_post('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download').with(body: expected)).to have_been_made
+        expect(a_post('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download').with(body: expected)).to have_been_made
       end
       it 'creates a app_download card' do
         card = @client.create_app_download_card('abc1', expected)
@@ -168,12 +168,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_put('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/pfs').with(body: expected)
+        stub_put('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/pfs').with(body: expected)
           .to_return(body: fixture('cards/app_download_put.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.update_app_download_card('abc1', 'pfs', expected)
-        expect(a_put('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/pfs').with(body: expected)).to have_been_made
+        expect(a_put('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/pfs').with(body: expected)).to have_been_made
       end
       it 'updates the card' do
         card = @client.update_app_download_card('abc1', 'pfs', expected)
@@ -185,12 +185,12 @@ describe Twitter::Ads::Cards do
 
     context '#destroy_app_download_card' do
       before do
-        stub_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/9z8')
+        stub_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/9z8')
           .to_return(body: fixture('cards/app_download_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.destroy_app_download_card('abc1', '9z8')
-        expect(a_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/app_download/9z8')).to have_been_made
+        expect(a_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/app_download/9z8')).to have_been_made
       end
       it 'deletes the correct resource' do
         card = @client.destroy_app_download_card('abc1', '9z8')
@@ -203,12 +203,12 @@ describe Twitter::Ads::Cards do
   context 'image app download' do
     context '#image_app_download_cards' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download')
           .to_return(body: fixture('cards/image_app_downloads.json'), headers:{content_type: 'application/json; charset=utf-7'})
       end
       it 'requests resources' do
         @client.image_app_download_cards('abc1')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download')).to have_been_made
       end
       it 'gets the right resources'do
         cards = @client.image_app_download_cards('abc1')
@@ -219,12 +219,12 @@ describe Twitter::Ads::Cards do
 
     context '#image_app_download_card' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/pfs')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/pfs')
           .to_return(body: fixture('cards/image_app_download.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resoruce' do
         @client.image_app_download_card('abc1', 'pfs')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/pfs')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/pfs')).to have_been_made
       end
       it 'gets the right resource' do
         card = @client.image_app_download_card('abc1', 'pfs')
@@ -245,12 +245,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_post('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download').with(body: expected)
+        stub_post('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download').with(body: expected)
           .to_return(body: fixture('cards/image_app_download_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.create_image_app_download_card('abc1', expected)
-        expect(a_post('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download').with(body: expected)).to have_been_made
+        expect(a_post('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download').with(body: expected)).to have_been_made
       end
       it 'creates a image_app_download card' do
         card = @client.create_image_app_download_card('abc1', expected)
@@ -266,12 +266,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_put('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/u9w').with(body: expected)
+        stub_put('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/u9w').with(body: expected)
           .to_return(body: fixture('cards/image_app_download_put.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.update_image_app_download_card('abc1', 'u9w', expected)
-        expect(a_put('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/u9w').with(body: expected)).to have_been_made
+        expect(a_put('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/u9w').with(body: expected)).to have_been_made
       end
       it 'updates the card' do
         card = @client.update_image_app_download_card('abc1', 'u9w', expected)
@@ -282,12 +282,12 @@ describe Twitter::Ads::Cards do
 
     context '#destroy_image_app_download_card' do
       before do
-        stub_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/ua1')
+        stub_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/ua1')
           .to_return(body: fixture('cards/image_app_download_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.destroy_image_app_download_card('abc1', 'ua1')
-        expect(a_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/image_app_download/ua1')).to have_been_made
+        expect(a_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/image_app_download/ua1')).to have_been_made
       end
       it 'deletes the correct resource' do
         card = @client.destroy_image_app_download_card('abc1', 'ua1')
@@ -300,12 +300,12 @@ describe Twitter::Ads::Cards do
   context 'website' do
     context '#website_cards' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/website')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/website')
           .to_return(body: fixture('cards/websites.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resources' do
         @client.website_cards('abc1')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/website')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/website')).to have_been_made
       end
       it 'gets the right resources'do
         cards = @client.website_cards('abc1')
@@ -316,12 +316,12 @@ describe Twitter::Ads::Cards do
 
     context '#website_card' do
       before do
-        stub_get('https://ads-api.twitter.com/0/accounts/abc1/cards/website/g9z')
+        stub_get('https://ads-api.twitter.com/1/accounts/abc1/cards/website/g9z')
           .to_return(body: fixture('cards/website.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resoruce' do
         @client.website_card('abc1', 'g9z')
-        expect(a_get('https://ads-api.twitter.com/0/accounts/abc1/cards/website/g9z')).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/accounts/abc1/cards/website/g9z')).to have_been_made
       end
       it 'gets the right resource' do
         card = @client.website_card('abc1', 'g9z')
@@ -341,12 +341,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_post('https://ads-api.twitter.com/0/accounts/abc1/cards/website').with(body: expected)
+        stub_post('https://ads-api.twitter.com/1/accounts/abc1/cards/website').with(body: expected)
           .to_return(body: fixture('cards/website_create.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.create_website_card('abc1', expected[:name], expected[:website_title], expected[:website_url], expected[:image_media_id], {website_cta: expected[:website_cta]})
-        expect(a_post('https://ads-api.twitter.com/0/accounts/abc1/cards/website').with(body: expected)).to have_been_made
+        expect(a_post('https://ads-api.twitter.com/1/accounts/abc1/cards/website').with(body: expected)).to have_been_made
       end
       it 'creates a website card' do
         card = @client.create_website_card('abc1', expected[:name], expected[:website_title], expected[:website_url], expected[:image_media_id], {website_cta: expected[:website_cta]})
@@ -363,12 +363,12 @@ describe Twitter::Ads::Cards do
         }
       end
       before do
-        stub_put('https://ads-api.twitter.com/0/accounts/abc1/cards/website/g9z').with(body: expected)
+        stub_put('https://ads-api.twitter.com/1/accounts/abc1/cards/website/g9z').with(body: expected)
           .to_return(body: fixture('cards/website_put.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.update_website_card('abc1', 'g9z', expected)
-        expect(a_put('https://ads-api.twitter.com/0/accounts/abc1/cards/website/g9z').with(body: expected)).to have_been_made
+        expect(a_put('https://ads-api.twitter.com/1/accounts/abc1/cards/website/g9z').with(body: expected)).to have_been_made
       end
       it 'updates the card' do
         card = @client.update_website_card('abc1', 'g9z', expected)
@@ -379,12 +379,12 @@ describe Twitter::Ads::Cards do
 
     context '#destroy_website_card' do
       before do
-        stub_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/website/gn6')
+        stub_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/website/gn6')
           .to_return(body: fixture('cards/website_delete.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'makes the correct request' do
         @client.destroy_website_card('abc1', 'gn6')
-        expect(a_delete('https://ads-api.twitter.com/0/accounts/abc1/cards/website/gn6')).to have_been_made
+        expect(a_delete('https://ads-api.twitter.com/1/accounts/abc1/cards/website/gn6')).to have_been_made
       end
       it 'deletes the correct resource' do
         card = @client.destroy_website_card('abc1', 'gn6')

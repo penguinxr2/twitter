@@ -7,11 +7,11 @@ describe Twitter::Ads::PromotableUsers do
 
   describe '#promotable_users' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/hkk5/promotable_users').to_return(body: fixture('promotable_users.json'), headers:{content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts/hkk5/promotable_users').to_return(body: fixture('promotable_users.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.promotable_users('hkk5')
-      expect(a_get('https://ads-api.twitter.com/0/accounts/hkk5/promotable_users')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/accounts/hkk5/promotable_users')).to have_been_made
     end
     it 'gets the right resources' do
       promotable_users = @client.promotable_users('hkk5')

@@ -22,7 +22,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted campaigns to be returned.
       def promotable_users(account_id, options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/promotable_users",
+        perform_get_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/promotable_users",
                                  options, Twitter::PromotableUser)
       end
     end

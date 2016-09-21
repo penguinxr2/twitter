@@ -24,7 +24,7 @@ module Twitter
       # @option options [String] :line_item_id Restrict listing to accounts associated to the specified line item.
       # @option options [Boolean] :with_deleted Set to true if you want deleted funding instruments to be returned.
       def promoted_tweets(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/promoted_tweets",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/promoted_tweets",
                                  options, :data, Twitter::PromotedTweet)
       end
 
@@ -41,7 +41,7 @@ module Twitter
       def promote_tweet(account_id, line_item_id, tweet_ids)
         opts = { line_item_id: line_item_id,
                  tweet_ids: tweet_ids }
-        perform_post_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/promoted_tweets",
+        perform_post_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/promoted_tweets",
                                   opts, Twitter::PromotedTweet)
 
       end
@@ -56,7 +56,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param promoted_tweet_id [String] Id of the promoted tweet record.
       def destroy_promoted_tweet(account_id, promoted_tweet_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/promoted_tweets/#{promoted_tweet_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/promoted_tweets/#{promoted_tweet_id}",
                                    {}, Twitter::PromotedTweet)
       end
 
@@ -75,7 +75,7 @@ module Twitter
       # @option options [Integer] :as_user_id The user ID of the advertiser on behalf of whom you are posting the Tweet
       def tweet(account_id, status, options = {})
         options = options.merge(status: status)
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/tweet", options, Twitter::Tweet)
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/tweet", options, Twitter::Tweet)
       end
     end
   end

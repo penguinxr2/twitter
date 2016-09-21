@@ -24,7 +24,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted funding instruments to be returned.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def funding_instruments(account_id, options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/funding_instruments",
+        perform_get_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/funding_instruments",
                                  options, Twitter::FundingInstrument)
       end
 
@@ -40,7 +40,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted funding instruments to be returned.
       def funding_instrument(account_id, funding_instrument_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/funding_instruments/#{funding_instrument_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/funding_instruments/#{funding_instrument_id}",
                                 options, Twitter::FundingInstrument)
       end
     end

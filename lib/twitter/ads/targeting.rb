@@ -40,7 +40,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted criteria to be returned.
       def targeting_criteria(account_id, line_item_id, options = {})
         options = options.merge(line_item_id: line_item_id)
-        perform_get_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_criteria",
+        perform_get_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_criteria",
                                  options, Twitter::TargetingCriterion)
       end
 
@@ -56,7 +56,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set to true if you want deleted criteria to be returned.
       def targeting_criterion(account_id, criterion_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_criteria/#{criterion_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_criteria/#{criterion_id}",
                                 options, Twitter::TargetingCriterion)
       end
 
@@ -77,7 +77,7 @@ module Twitter
         options = options.merge({ line_item_id: line_item_id,
                                   targeting_type: targeting_type,
                                   targeting_value: targeting_value })
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_criteria",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_criteria",
                                  options, Twitter::TargetingCriterion)
 
       end
@@ -94,7 +94,7 @@ module Twitter
       # @param options [Hash] customizeable options. See documentation for options.
       def update_targeting_criteria(account_id, line_item_id, options = {})
         options = options.merge(line_item_id: line_item_id)
-        perform_put_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_criteria",
+        perform_put_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_criteria",
                                  options, Twitter::TargetingCriterion)
       end
 
@@ -108,7 +108,7 @@ module Twitter
       # @param account_id [String] Ads account id.
       # @param criterion_id [String] Desired criterion's id.
       def destroy_targeting_criterion(account_id, criterion_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_criteria/#{criterion_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_criteria/#{criterion_id}",
                                    {}, Twitter::TargetingCriterion)
       end
 
@@ -126,7 +126,7 @@ module Twitter
       def targeting_suggestions(account_id, suggestion_type, targeting_values, options = {})
         options = options.merge(suggestion_type: suggestion_type,
                                 targeting_values: targeting_values)
-        perform_get_with_objects("https://ads-api.twitter.com/0/accounts/#{account_id}/targeting_suggestions",
+        perform_get_with_objects("https://ads-api.twitter.com/1/accounts/#{account_id}/targeting_suggestions",
                                  options, Twitter::TargetingSuggestion)
       end
 
@@ -142,7 +142,7 @@ module Twitter
       # @option options [String] :store Scope results to a specific app store (IOS_APP_STORE, GOOGLE_PLAY).
       # @option options [String] :q Query to scope results.
       def app_store_categories(options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/app_store_categories",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/app_store_categories",
                                  options, Twitter::TargetingCriterion::AppStoreCategory)
       end
 
@@ -157,7 +157,7 @@ module Twitter
       # @option options [String] :behavior_taxonomy_ids Comma separated list of taxonomy ids to filter the response.
       # @option options [String] :parent_behavior_taxonomy_ids Limit results to the children of a comma separated list of taxonomy ids.
       def behavior_taxonomies(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/behavior_taxonomies",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/behavior_taxonomies",
                                  options, :data, Twitter::TargetingCriterion::BehaviorTaxonomy)
       end
 
@@ -172,7 +172,7 @@ module Twitter
       # @option options [String] :behavior_ids Comma separated list of identifiers to filter by
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def behaviors(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/behaviors",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/behaviors",
                                  options, :data, Twitter::TargetingCriterion::Behavior)
       end
 
@@ -186,7 +186,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :q Query to scope results.
       def devices(options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/devices",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/devices",
                                  options, Twitter::TargetingCriterion::Device)
       end
 
@@ -200,7 +200,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :q Query to scope results.
       def interests(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/interests",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/interests",
                                  options, :data, Twitter::TargetingCriterion::Interest)
       end
 
@@ -214,7 +214,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :q Query to scope results.
       def languages(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/languages",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/languages",
                                  options, :data, Twitter::TargetingCriterion::Language)
       end
 
@@ -230,7 +230,7 @@ module Twitter
       # @option options [String] :location_type Type of location to lookup (COUNTRY, REGION, CITY, POSTAL_CODE).
       # @option options [String] :q Query to scope results.
       def locations(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/locations",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/locations",
                                  options, :data, Twitter::TargetingCriterion::Location)
       end
 
@@ -245,7 +245,7 @@ module Twitter
       # @option options [String] :country_code Two letter ISO country code to restrict search
       # @option options [String] :q Query to scope results.
       def network_operators(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/network_operators",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/network_operators",
                                  options, :data, Twitter::TargetingCriterion::NetworkOperator)
       end
 
@@ -259,7 +259,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :q Query to scope results.
       def platform_versions(options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/platform_versions",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/platform_versions",
                                  options, Twitter::TargetingCriterion::PlatformVersion)
       end
 
@@ -273,7 +273,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :q Query to scope results.
       def platforms(options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/platforms",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/platforms",
                                  options, Twitter::TargetingCriterion::Platform)
       end
 
@@ -287,7 +287,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [String] :tv_market_locale BCP 47 language code of locale to return results for.
       def tv_channels(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/tv_channels",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/tv_channels",
                                  options, :data, Twitter::TargetingCriterion::TVChannel)
       end
 
@@ -299,7 +299,7 @@ module Twitter
       # @raise [Twitter::Error::Unauthorized] Error raised when supplied user credentials are not valid.
       # @return [Array<Twitter::TargetingCriterion::TVGenre>]
       def tv_genres
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/tv_genres",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/tv_genres",
                                  {}, Twitter::TargetingCriterion::TVGenre)
       end
 
@@ -311,7 +311,7 @@ module Twitter
       # @raise [Twitter::Error::Unauthorized] Error raised when supplied user credentials are not valid.
       # @return [Array<Twitter::TargetingCriterion::TVMarket>]
       def tv_markets(options = {})
-        perform_get_with_objects("https://ads-api.twitter.com/0/targeting_criteria/tv_markets",
+        perform_get_with_objects("https://ads-api.twitter.com/1/targeting_criteria/tv_markets",
                                  options, Twitter::TargetingCriterion::TVMarket)
       end
 
@@ -325,7 +325,7 @@ module Twitter
       # @option options [String] :tv_market_locale BCP 47 language code of locale to return results for.
       # @option options [String] :q Query to scope results.
       def tv_shows(options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/targeting_criteria/tv_shows",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/targeting_criteria/tv_shows",
                                  options, :data, Twitter::TargetingCriterion::TVShow)
       end
     end

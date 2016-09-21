@@ -25,7 +25,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted funding instruments to be returned.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def promoted_accounts(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/promoted_accounts",
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/promoted_accounts",
                                  options, :data, Twitter::PromotedAccount)
       end
 
@@ -44,7 +44,7 @@ module Twitter
           line_item_id: line_item_id,
           user_id: user_id,
         }
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/promoted_accounts",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/promoted_accounts",
                                 args, Twitter::PromotedAccount)
       end
     end

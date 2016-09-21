@@ -8,13 +8,13 @@ describe Twitter::Ads::Statistics do
   describe '#account_stats' do
     let(:start_time) { '2012-11-20T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/43853bhii879')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/43853bhii879')
         .with(query: {granularity: 'TOTAL', start_time: start_time}).to_return(body: fixture('account_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.account_stats('43853bhii879', start_time: start_time, granularity: 'TOTAL')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/43853bhii879').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/43853bhii879').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -27,13 +27,13 @@ describe Twitter::Ads::Statistics do
   describe '#campaign_stats' do
     context 'non-segmented' do
       before do
-        stub_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/campaigns/e25e')
+        stub_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/campaigns/e25e')
           .with(query: {granularity: 'DAY', start_time: '2013-04-13T07:00:00Z'}).to_return(body: fixture('campaign_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
 
       it 'requests resources' do
         @client.campaign_stats('5gvk9h', 'e25e', start_time: '2013-04-13T07:00:00Z', granularity: 'DAY')
-        expect(a_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/campaigns/e25e').with(query: {granularity: 'DAY', start_time: '2013-04-13T07:00:00Z'})).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/campaigns/e25e').with(query: {granularity: 'DAY', start_time: '2013-04-13T07:00:00Z'})).to have_been_made
       end
 
       it 'gets the right resource' do
@@ -44,12 +44,12 @@ describe Twitter::Ads::Statistics do
     end
     context 'segmented' do
       before do
-        stub_get('https://ads-api.twitter.com/0/stats/accounts/abc1/campaigns/1ldet')
+        stub_get('https://ads-api.twitter.com/1/stats/accounts/abc1/campaigns/1ldet')
           .with(query: {granularity: 'DAY', segmentation_type: 'GENDER', start_time: '2013-07-07T07:00:00Z'}).to_return(body: fixture('campaign_stats_segmented.json'), headers:{content_type: 'application/json; charset=utf-8'})
       end
       it 'requests resources' do
         @client.campaign_stats('abc1', '1ldet', start_time: '2013-07-07T07:00:00Z', granularity: 'DAY', segmentation_type: 'GENDER')
-        expect(a_get('https://ads-api.twitter.com/0/stats/accounts/abc1/campaigns/1ldet').with(query: {granularity: 'DAY', start_time: '2013-07-07T07:00:00Z', segmentation_type: 'GENDER'})).to have_been_made
+        expect(a_get('https://ads-api.twitter.com/1/stats/accounts/abc1/campaigns/1ldet').with(query: {granularity: 'DAY', start_time: '2013-07-07T07:00:00Z', segmentation_type: 'GENDER'})).to have_been_made
       end
     end
   end
@@ -57,13 +57,13 @@ describe Twitter::Ads::Statistics do
   describe '#line_item_stats' do
     let(:start_time) { '2012-11-20T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/line_items/5woz')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/line_items/5woz')
         .with(query: {granularity: 'DAY', start_time: start_time}).to_return(body: fixture('line_item_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.line_item_stats('hkk5', '5woz', start_time: start_time, granularity: 'DAY')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/line_items/5woz').with(query: {granularity: 'DAY', start_time: start_time})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/line_items/5woz').with(query: {granularity: 'DAY', start_time: start_time})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -76,13 +76,13 @@ describe Twitter::Ads::Statistics do
   describe '#promoted_tweet_stats' do
     let(:start_time) { '2012-11-20T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/4cury/promoted_tweets/2m4ky')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/4cury/promoted_tweets/2m4ky')
         .with(query: {granularity: 'TOTAL', start_time: start_time}).to_return(body: fixture('promoted_tweet_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.promoted_tweet_stats('4cury', '2m4ky', start_time: start_time, granularity: 'TOTAL')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/4cury/promoted_tweets/2m4ky').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/4cury/promoted_tweets/2m4ky').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -95,13 +95,13 @@ describe Twitter::Ads::Statistics do
   describe '#promoted_account_stats' do
     let(:start_time) { '2013-05-01T00:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_accounts/d9qr')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_accounts/d9qr')
         .with(query: {granularity: 'TOTAL', start_time: start_time}).to_return(body: fixture('promoted_account_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.promoted_account_stats('hkk5', 'd9qr', start_time: start_time, granularity: 'TOTAL')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_accounts/d9qr').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_accounts/d9qr').with(query: {granularity: 'TOTAL', start_time: start_time})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -114,13 +114,13 @@ describe Twitter::Ads::Statistics do
   describe '#funding_instrument_stats' do
     let(:start_time) { '2013-04-13T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/funding_instruments/e25e')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/funding_instruments/e25e')
         .with(query: {granularity: 'DAY', start_time: start_time}).to_return(body: fixture('funding_instrument_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.funding_instrument_stats('5gvk9h', 'e25e', start_time: start_time, granularity: 'DAY')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/funding_instruments/e25e').with(query: {granularity: 'DAY', start_time: start_time})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/funding_instruments/e25e').with(query: {granularity: 'DAY', start_time: start_time})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -133,13 +133,13 @@ describe Twitter::Ads::Statistics do
   describe '#campaigns_stats' do
     let(:start_time) { '2013-04-13T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/campaigns')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/campaigns')
         .with(query: {granularity: 'DAY', start_time: start_time, campaign_ids: 'e25e'}).to_return(body: fixture('campaigns_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.campaigns_stats('5gvk9h', ['e25e'], start_time: start_time, granularity: 'DAY')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/campaigns').with(query: {granularity: 'DAY', start_time: start_time, campaign_ids: 'e25e'})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/campaigns').with(query: {granularity: 'DAY', start_time: start_time, campaign_ids: 'e25e'})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -152,13 +152,13 @@ describe Twitter::Ads::Statistics do
   describe '#line_items_stats' do
     let(:start_time) { '2013-04-13T07:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/line_items')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/line_items')
         .with(query: {granularity: 'DAY', start_time: start_time, line_item_ids: '5woz'}).to_return(body: fixture('line_items_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.line_items_stats('hkk5', ['5woz'], start_time: start_time, granularity: 'DAY')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/line_items').with(query: {granularity: 'DAY', start_time: start_time, line_item_ids: '5woz'})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/line_items').with(query: {granularity: 'DAY', start_time: start_time, line_item_ids: '5woz'})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -171,13 +171,13 @@ describe Twitter::Ads::Statistics do
   describe '#promoted_tweets_stats' do
     let(:start_time) { '2013-04-01T00:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_tweets')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_tweets')
         .with(query: {granularity: 'TOTAL', start_time: start_time, promoted_tweet_ids: 'rd9q'}).to_return(body: fixture('promoted_tweets_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.promoted_tweets_stats('hkk5', ['rd9q'], start_time: start_time, granularity: 'TOTAL')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_tweets').with(query: {granularity: 'TOTAL', start_time: start_time, promoted_tweet_ids: 'rd9q'})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_tweets').with(query: {granularity: 'TOTAL', start_time: start_time, promoted_tweet_ids: 'rd9q'})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -190,13 +190,13 @@ describe Twitter::Ads::Statistics do
   describe '#promoted_accounts_stats' do
     let(:start_time) { '2013-04-01T00:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_accounts')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_accounts')
         .with(query: {granularity: 'TOTAL', start_time: start_time, promoted_account_ids: 'd9qr'}).to_return(body: fixture('promoted_accounts_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.promoted_accounts_stats('hkk5', ['d9qr'], start_time: start_time, granularity: 'TOTAL')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/hkk5/promoted_accounts').with(query: {granularity: 'TOTAL', start_time: start_time, promoted_account_ids: 'd9qr'})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/hkk5/promoted_accounts').with(query: {granularity: 'TOTAL', start_time: start_time, promoted_account_ids: 'd9qr'})).to have_been_made
     end
 
     it 'gets the right resource' do
@@ -209,13 +209,13 @@ describe Twitter::Ads::Statistics do
   describe '#funding_instruments_stats' do
     let(:start_time) { '2013-04-01T00:00:00Z' }
     before do
-      stub_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/funding_instruments')
+      stub_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/funding_instruments')
         .with(query: {granularity: 'DAY', start_time: start_time, funding_instrument_ids: 'e25e'}).to_return(body: fixture('funding_instruments_stats.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
 
     it 'requests resources' do
       @client.funding_instruments_stats('5gvk9h', ['e25e'], start_time: start_time, granularity: 'DAY')
-      expect(a_get('https://ads-api.twitter.com/0/stats/accounts/5gvk9h/funding_instruments').with(query: {granularity: 'DAY', start_time: start_time, funding_instrument_ids: 'e25e'})).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/stats/accounts/5gvk9h/funding_instruments').with(query: {granularity: 'DAY', start_time: start_time, funding_instrument_ids: 'e25e'})).to have_been_made
     end
 
     it 'gets the right resource' do

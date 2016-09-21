@@ -26,7 +26,7 @@ module Twitter
       # @option options [Boolean] :with_deleted Set to true if you want deleted campaigns to be returned.
       # @option options [String] :sort_by Set this to change the sorting of returned values.
       def campaigns(account_id, options = {})
-        perform_get_with_cursor("https://ads-api.twitter.com/0/accounts/#{account_id}/campaigns", options,
+        perform_get_with_cursor("https://ads-api.twitter.com/1/accounts/#{account_id}/campaigns", options,
                                 :data, Twitter::Campaign)
       end
 
@@ -42,7 +42,7 @@ module Twitter
       # @param options [Hash] customizeable options.
       # @option options [Boolean] :with_deleted Set this to true to retrieve a deleted campaign.
       def campaign(account_id, campaign_id, options = {})
-        perform_get_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/campaigns/#{campaign_id}",
+        perform_get_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/campaigns/#{campaign_id}",
                                 options, Twitter::Campaign)
       end
 
@@ -64,7 +64,7 @@ module Twitter
       # @option options [Integer] :total_budget_amount_local_micro The total budget amount (Amount*1e6).
       # @option options [Integer] :daily_budget_amount_local_micro The daily budget amount (Amount*1e6).
       def create_campaign(account_id, options = {})
-        perform_post_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/campaigns",
+        perform_post_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/campaigns",
                                 options, Twitter::Campaign)
       end
 
@@ -86,7 +86,7 @@ module Twitter
       # @option options [Boolean] :paused Set this to true to pause the campaign.
       # @option options [Boolean] :standard_delivery Set to true to use standard delivery.
       def update_campaign(account_id, campaign_id, options = {})
-        perform_put_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/campaigns/#{campaign_id}",
+        perform_put_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/campaigns/#{campaign_id}",
                     options, Twitter::Campaign)
       end
 
@@ -100,7 +100,7 @@ module Twitter
       # @param account_id [String] An ads account id.
       # @param campaign_id [String] The id of the campaign to fetch.
       def destroy_campaign(account_id, campaign_id)
-        perform_delete_with_object("https://ads-api.twitter.com/0/accounts/#{account_id}/campaigns/#{campaign_id}",
+        perform_delete_with_object("https://ads-api.twitter.com/1/accounts/#{account_id}/campaigns/#{campaign_id}",
                                    {}, Twitter::Campaign)
       end
     end

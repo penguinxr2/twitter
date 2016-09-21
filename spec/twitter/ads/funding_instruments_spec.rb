@@ -7,11 +7,11 @@ describe Twitter::Ads::FundingInstruments do
 
   describe '#funding_instruments' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/hkk5/funding_instruments').to_return(body: fixture('funding_instruments.json'), headers:{content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts/hkk5/funding_instruments').to_return(body: fixture('funding_instruments.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests resources' do
       @client.funding_instruments('hkk5')
-      expect(a_get('https://ads-api.twitter.com/0/accounts/hkk5/funding_instruments')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/accounts/hkk5/funding_instruments')).to have_been_made
     end
     it 'gets the right resources' do
       funding_instruments = @client.funding_instruments('hkk5')
@@ -21,11 +21,11 @@ describe Twitter::Ads::FundingInstruments do
 
   describe '#funding_instrument' do
     before do
-      stub_get('https://ads-api.twitter.com/0/accounts/hkk5/funding_instruments/hw6ie').to_return(body: fixture('funding_instrument_get.json'), headers:{content_type: 'application/json; charset=utf-8'})
+      stub_get('https://ads-api.twitter.com/1/accounts/hkk5/funding_instruments/hw6ie').to_return(body: fixture('funding_instrument_get.json'), headers:{content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resoruce' do
       @client.funding_instrument('hkk5', 'hw6ie')
-      expect(a_get('https://ads-api.twitter.com/0/accounts/hkk5/funding_instruments/hw6ie')).to have_been_made
+      expect(a_get('https://ads-api.twitter.com/1/accounts/hkk5/funding_instruments/hw6ie')).to have_been_made
     end
     it 'gets the correct resource' do
       funding_instrument = @client.funding_instrument('hkk5', 'hw6ie')
